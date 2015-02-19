@@ -4,7 +4,7 @@ package week4
  * Created by niranda on 1/12/15.
  */
 // Peano numbers
-abstract class Nat {
+abstract class  Nat {
   def isZero: Boolean
   def predecessor: Nat
   def successor: Nat = new Succ(this)
@@ -21,6 +21,8 @@ object Zero extends Nat{
   def -(that: Nat): Nat = if (that.isZero) this else throw new Error ("negative number")
 
   def predecessor: Nat = throw new Error ("0.predecessor")
+
+  override def toString = "0"
 }
 
 class Succ(n: Nat) extends Nat{
@@ -31,5 +33,7 @@ class Succ(n: Nat) extends Nat{
   def +(that: Nat): Nat = new Succ(n+that)
 
   def -(that: Nat): Nat = if (that.isZero) this else n - that.predecessor
+
+  override def toString = "succ("+n.toString+")"
 }
 
